@@ -49,15 +49,12 @@ const mysql = require('mysql')
 // })
 
 const server = http.createServer((req, res) => {        
-    const uri = url.parse(req.url,true)
-    const href = uri.href
+    const uri = url.parse(req.url,true)    
     switch(uri.pathname){
-        case '/penjumlahan': {
-            const parameter = href.split('?')
-            const input = parameter[1].split('&')
+        case '/penjumlahan': {            
             const parameterInput = {
-                a : input[0][2], 
-                b: input[1][2]
+                a : uri.query.a,
+                b: uri.query.b
             }
             const hasil = add(parameterInput.a, parameterInput.b)
             res.setHeader('content-type','application/json')
