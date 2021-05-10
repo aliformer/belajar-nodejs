@@ -11,5 +11,8 @@
   "description": "",
   "devDependencies": {
     "mysql": "^2.18.1"
+  },
+  "dependencies": {
+    "busboy": "^0.3.1"
   }
 }
