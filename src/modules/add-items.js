@@ -1,7 +1,8 @@
 
 const addItem = (req, res) => {
    return new Promise((resolve, reject) => {
-       let data = ""     
+        let data = ""
+
         req.on('data', (chunk, encoding) => {
             data += chunk.toString()
         })
@@ -12,20 +13,15 @@ const addItem = (req, res) => {
             const nama = dataparsed.nama
             const jumlah = dataparsed.jumlah
             const response = await tambah(nama, jumlah)
-            res.write(response)
+            res.write(inventory)
             res.end()
         })
         resolve(data)
         reject((error) => {
             console.log(error)
         })
-
-
     })
 }
 
-function tambah(nama, jumlah){
-    db.write({nama, jumlah})
-}
 
 module.exports = { addItem }
