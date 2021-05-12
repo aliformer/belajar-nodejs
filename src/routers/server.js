@@ -2,7 +2,7 @@ const http = require('http')
 const url = require('url')
 const process = require('process')
 const { addItem } = require('../modules/add-items')
-
+const { addImages } = require('../modules/add-images')
 const server = http.createServer((req, res) => {
         const uri = url.parse(req.url, true)
         const method = req.method
@@ -22,6 +22,11 @@ const server = http.createServer((req, res) => {
             case '/perbarui-item':{
                 if(method === "PUT")
                 return updateItem(req,res)
+            }
+            case '/tambah-gambar':{
+                if(method  === 'POST'){
+                return addImages(req,res)
+                }
             }
         }
      })

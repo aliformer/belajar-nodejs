@@ -8,17 +8,14 @@ const addItem = (req, res) => {
         })
         req.on('end', () => {
             res.setHeader('content-type','application/json')
-            const inventory = JSON.parse(JSON.stringify(data))
-            const dataparsed = JSON.parse(data)
-            const nama = dataparsed.nama
-            const jumlah = dataparsed.jumlah
-            const response = await tambah(nama, jumlah)
+            const inventory = JSON.parse(JSON.stringify(data))                        
             res.write(inventory)
             res.end()
         })
         resolve(data)
         reject((error) => {
-            console.log(error)
+            res.write('error has been occured', error)
+            res.end()
         })
     })
 }
