@@ -1,22 +1,17 @@
+const { updateItems } = require("../helper/db/schema")
 
-const addItem = (req, res) => {
-   return new Promise((resolve, reject) => {
+const updateItem = (req, res) => {
         let data = ""
-
         req.on('data', (chunk, encoding) => {
             data += chunk.toString()
         })
-        req.on('end', () => {
-            res.setHeader('content-type','application/json')
-            const inventory = JSON.parse(JSON.stringify(data))                        
-            res.write(inventory)
+        req.on('end', async () => {
+            const inventory = JSON.parse(data)      
+            await updateItems(inventory)                   
+            await res.write('successfully update data')
             res.end()
         })
-        resolve(data)
-        reject((error) => {
-            res.write('error has been occured', error)
-            res.end()
-        })
-    })
+ 
 }
 
+module.exports = { updateItem }

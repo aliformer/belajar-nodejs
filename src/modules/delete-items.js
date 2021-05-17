@@ -8,7 +8,7 @@ const deleteItem = (req, res) => {
         })
         req.on('end', async () => {
             const inventory = JSON.parse(data)
-            await destroyItem(inventory.nama)
+            await destroyItem(inventory.id)
             await res.write('sucessfuly deleted')
             await res.end()
         })

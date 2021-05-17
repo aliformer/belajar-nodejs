@@ -29,7 +29,7 @@ async function insertItem(data){
 
 async function destroyItem(data){
     items.destroy({where : {
-        nama : data
+        id: data
     }})
 }
 
@@ -37,4 +37,12 @@ async function getItems(){
     return await items.findAll()
 }
 
-module.exports = { init, insertItem, destroyItem, getItems}
+async function updateItems(data){
+    await items.update({nama : data.nama , jumlah: parseInt(data.jumlah)}, {
+        where: {
+            id: data.id
+        }
+    })
+}
+
+module.exports = { init, insertItem, destroyItem, getItems, updateItems}
