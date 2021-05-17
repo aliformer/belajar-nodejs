@@ -3,6 +3,7 @@ const url = require('url')
 const process = require('process')
 const { addItem } = require('../modules/add-items')
 const { addImages } = require('../modules/add-images')
+const { deleteItem } = require('../modules/delete-items')
 const server = http.createServer((req, res) => {
         const uri = url.parse(req.url, true)
         const method = req.method

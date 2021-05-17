@@ -1,4 +1,9 @@
-const {server} = require('./src/routers/server')
-const { start } = require('./src/routers/server')
+const { init } = require('./src/helper/db/schema')
+const { start , server} = require('./src/routers/server')
 
-start()
+function run () {
+    init()
+    start()
+}
+
+run()
