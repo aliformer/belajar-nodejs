@@ -4,6 +4,7 @@ const process = require('process')
 const { addItem } = require('../modules/add-items')
 const { addImages } = require('../modules/add-images')
 const { deleteItem } = require('../modules/delete-items')
+const { getAllItems } = require('../modules/get-items')
 const server = http.createServer((req, res) => {
         const uri = url.parse(req.url, true)
         const method = req.method
@@ -18,7 +19,7 @@ const server = http.createServer((req, res) => {
             }
             case '/dapat-item':{
                 if(method === "GET")
-                return getItem(req,res)
+                return getAllItems(req,res)
             }
             case '/perbarui-item':{
                 if(method === "PUT")

@@ -3,6 +3,7 @@ const { defineItems } = require("./model");
 
 
 //config
+
 const database = "inventory";
 const username = "root";
 const password = "";
@@ -12,8 +13,8 @@ const options = {
     port: "3306"
 };
 
-
 //items model 
+
 let items
 
 async function init() {
@@ -32,5 +33,8 @@ async function destroyItem(data){
     }})
 }
 
+async function getItems(){
+    return await items.findAll()
+}
 
-module.exports = { init, insertItem, destroyItem}
+module.exports = { init, insertItem, destroyItem, getItems}

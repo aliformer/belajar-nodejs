@@ -1,4 +1,4 @@
-const { DataTypes} = require('sequelize')
+const { DataTypes } = require('sequelize')
 
 function defineItems(orm){
    return  orm.define('item', {
