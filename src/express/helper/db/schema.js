@@ -45,4 +45,10 @@ async function updateItems(data){
     })
 }
 
-module.exports = { init, insertItem, destroyItem, getItems, updateItems}
+async function getItemById(data){
+    return items.find({where : {
+        id: data
+    }})
+}
+
+module.exports = { init, insertItem, destroyItem, getItems, updateItems, getItemById}

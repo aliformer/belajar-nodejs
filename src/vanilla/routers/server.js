@@ -6,6 +6,8 @@ const { addImages } = require('../modules/add-images')
 const { deleteItem } = require('../modules/delete-items')
 const { getAllItems } = require('../modules/get-items')
 const { updateItem } = require('../modules/update-items')
+const { getItem } = require('../modules/get-item')
+
 const server = http.createServer((req, res) => {
         const uri = url.parse(req.url, true)
         const method = req.method
@@ -26,6 +28,10 @@ const server = http.createServer((req, res) => {
                 if(method === "PUT")
                 return updateItem(req,res)
             }
+            case '/dapat-item/id' : 
+                if(method === "GET")
+                return getItem(req, res)
+                
             case '/tambah-gambar':{
                 if(method  === 'POST'){
                 return addImages(req,res)
@@ -38,7 +44,7 @@ const PORT = process.env.PORT || 5000
 
 function start () {
     server.listen(PORT, () => {
-    process.stdout.write(`server inventory jalan di port ${PORT}`)
+    process.stdout.write(`server inventory jalan di port ${PORT} /n`)
 })
 }
 

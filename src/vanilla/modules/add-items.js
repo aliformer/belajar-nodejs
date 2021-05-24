@@ -2,7 +2,6 @@ const { createItem, insertItem } = require("../helper/db/schema")
 
 const addItem = (req, res) => {
         let data = ""
-
         req.on('data', (chunk, encoding) => {
             data += chunk.toString()
         })
@@ -11,8 +10,7 @@ const addItem = (req, res) => {
                 const inventory = JSON.parse(data)
                 console.log(inventory.nama)
                 await insertItem({nama : inventory.nama , jumlah :  parseInt(inventory.jumlah)})
-                await res.write('berhasil menyimpan data')
-                await res.end()
+                await res.send('berhasil menyimpan data')
             }
             catch (error) {
                 console.log(error)
